@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # o 'master' si ese es tu branch principal
+      - main  # Cambia si tu rama principal es "master"
 
 permissions:
   contents: read
@@ -13,6 +13,7 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -20,10 +21,10 @@ jobs:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: Subir archivos
-        uses: actions/upload-pages-artifact@v2
+      - name: Subir archivos (nuevo método)
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: .  # Publica todo desde la raíz del repo
+          path: .  # Publica desde la raíz del proyecto
 
       - name: Desplegar a GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
